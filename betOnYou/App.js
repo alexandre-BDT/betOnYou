@@ -1,19 +1,25 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Play from "./src/Play";
+import BackPage from "./src/BackPage";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+const Stack = createStackNavigator();
+
+export default class App extends Component {
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false
+          }}
+        >
+          <Stack.Screen name="Play" component={Play} />
+          <Stack.Screen name="BackPageShop" component={BackPage} />
+          <Stack.Screen name="BackPageProfil" component={BackPage} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
